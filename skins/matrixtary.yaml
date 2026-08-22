@@ -1,0 +1,76 @@
+# Matrix-derived profile skin for gintary.
+# Keeps the AlienBlood structure while shifting identity accents slightly toward teal.
+name: matrixtary
+description: Matrix-derived teal signal for the gintary profile
+
+colors:
+  background: "#0f160f"
+  ui_accent: "#1ad6b0"
+  banner_accent: "#1ad6b0"
+  banner_title: "#83f5c8"
+  banner_text: "#5f887f"
+  ui_text: "#5f887f"
+  banner_dim: "#355249"
+  banner_border: "#267d69"
+  ui_border: "#267d69"
+  ui_ok: "#18e000"
+  ui_warn: "#bde000"
+  ui_error: "#df8008"
+  prompt: "#83f5c8"
+  input_rule: "#267d69"
+  response_border: "#1ad6b0"
+  status_bar_bg: "#112615"
+  status_bar_text: "#5f887f"
+  status_bar_good: "#18e000"
+  status_bar_warn: "#bde000"
+  status_bar_critical: "#df8008"
+  session_label: "#83f5c8"
+  session_border: "#267d69"
+  voice_status_bg: "#112615"
+  selection_bg: "#1b342d"
+  completion_menu_bg: "#112615"
+  completion_menu_current_bg: "#1b342d"
+  completion_menu_meta_bg: "#112615"
+  completion_menu_meta_current_bg: "#267d69"
+
+  # Diff line backgrounds stay dark; word-level text carries the signal.
+  diff_added: "#112615"
+  diff_removed: "#261414"
+  diff_added_word: "#83f5c8"
+  diff_removed_word: "#df8008"
+
+  syntax_string: "#18e000"
+  syntax_number: "#00dfc3"
+  syntax_keyword: "#00a9df"
+  syntax_comment: "#5f887f"
+
+branding:
+  agent_name: Matrix Tary
+  prompt_symbol: "⌁"
+  help_header: "╔═ TEAL SIGNAL LINK ═╗"
+
+spinner:
+  waiting_faces: ["[::]", "[::]", "[::]"]
+  thinking_faces: ["[>>]", "[<>]", "[<<]"]
+  thinking_verbs:
+    - decoding
+    - tracing the signal
+    - following the node
+    - compiling the construct
+
+tool_prefix: "»"
+
+banner_logo: |
+  [bold #83f5c8]███╗   ███╗ █████╗ ████████╗██████╗ ██╗██╗  ██╗[/]
+  [bold #1ad6b0]████╗ ████║██╔══██╗╚══██╔══╝██╔══██╗██║╚██╗██╔╝[/]
+  [bold #1ad6b0]██╔████╔██║███████║   ██║   ██████╔╝██║ ╚███╔╝ [/]
+  [bold #267d69]██║╚██╔╝██║██╔══██║   ██║   ██╔══██╗██║ ██╔██╗ [/]
+  [bold #267d69]██║ ╚═╝ ██║██║  ██║   ██║   ██║  ██║██║██╔╝ ██╗[/]
+  [bold #355249]╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝[/]
+
+banner_hero: |
+  [#267d69]│ 0 1 │ 1 0 │ 0 0 │ 1 1 │ 0 1 │ 1 0 │[/]
+  [#1ad6b0]│ 1 0 │ 0 1 │ 1 1 │ 0 0 │ 1 0 │ 0 1 │[/]
+  [#83f5c8]│ 0 0 │ 1 1 │ 0 1 │ 1 0 │ 1 1 │ 0 0 │[/]
+  [#1ad6b0]╰────┴────┴────┴────┴────┴────╯[/]
+  [dim #5f887f]             signal acquired[/]

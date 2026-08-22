@@ -236,7 +236,7 @@ display:
   file_mutation_verifier: true
   turn_completion_explainer: true
   show_cost: false
-  skin: poseidon
+  skin: matrixtary
   language: en
   tui_status_indicator: kaomoji
   user_message_preview:
