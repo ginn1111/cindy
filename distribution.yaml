@@ -1,5 +1,5 @@
 name: gintary
-version: 1.2.1
+version: 1.2.2
 description: Autonomous secretary assistant with shared gstack skills and herdr-agent-state plugin
 hermes_requires: ">=0.18.0"
 author: Gin

@@ -10,12 +10,32 @@ state.db
 state.db-shm
 state.db-wal
 state.db.bak
+*.db
+*.db-shm
+*.db-wal
 auth.lock
 *.lock
+gateway.pid
+gateway_state.json
+channel_directory.json
+provider_models_cache.json
+models_dev_cache.json
+ollama_cloud_models_cache.json
+verification_evidence.db
+processes.json
+projects.db
 
 # Session / chat history
 .hermes_history
 .hermes_history.*
+sessions/
+pending/
+terminal-sessions/
+desktop/
+lsp/
+cron/
+cache/
+memories/
 
 # Checkpoints, update tracking
 .checkpoints/
@@ -41,4 +61,7 @@ __pycache__/
 *.egg-info/
 auth.json
 _snapshot.*
-sessions
+.skills_prompt_snapshot.json
+skills/.bundled_manifest
+skills/.curator_state
+skills/.usage.json
