@@ -26,3 +26,20 @@ security:
   allow_private_urls: false
 profile:
   timezone: Asia/Bangkok
+# [phase 4 chat] Slack tokens + Gin allowlist live in .env (SLACK_*).
+slack:
+  require_mention: true
+platforms:
+  slack:
+    enabled: true
+platform_toolsets:
+  slack:
+    - clarify
+    - file
+    - memory
+    - messaging
+    - session_search
+    - skills
+    - terminal
+    - todo
+    - web

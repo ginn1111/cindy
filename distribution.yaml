@@ -13,7 +13,7 @@ env_requires:
   - name: CINDY_LLM_MODEL
     description: '[phase 1 core] Model name served by the endpoint'
   - name: SLACK_BOT_TOKEN
-    description: '[phase 4 chat] Cindy Slack app bot token (never gintary''s)'
+    description: '[phase 4 chat] Cindy Slack app bot token (app owned by Cindy only; no other profile holds it)'
     required: false
   - name: SLACK_APP_TOKEN
     description: '[phase 4 chat] Cindy Slack app-level token'

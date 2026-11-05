@@ -14,7 +14,7 @@ See issue #5. Depends on: CINDY-1.
 
 ## Preconditions
 
-- External: Separate Cindy Slack app created and installed; tokens issued to Cindy only.
+- External: Cindy Slack app installed; tokens held by Cindy only. Gin decision 2026-11-05: existing gintary app moved to Cindy (gintary Slack disabled, tokens removed from gintary .env).
 
 ## Scope
 
