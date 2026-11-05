@@ -17,6 +17,10 @@ TMP=$(mktemp -d "${TMPDIR:-/tmp}/cindy-smoke.XXXXXX")
 trap 'rm -rf "$TMP"' EXIT
 H="$TMP/root/profiles/cindy"
 mkdir -p "$H" "$TMP/home"
+# ponytail: share only the dependency store (venvs, no creds/state) so Hermes skips a full rebuild
+# under the throwaway root. Upgrade: per-run venv when CI has a compiler toolchain.
+DEPS=${HERMES_DEPS_ROOT:-$HOME/.hermes}/installs
+[ -d "$DEPS" ] && ln -s "$DEPS" "$TMP/root/installs"
 cp -a "$SRC/SOUL.md" "$SRC/config.yaml" "$SRC/.env" "$SRC/skills" "$H/"
 [ -f "$SRC/.no-bundled-skills" ] && cp "$SRC/.no-bundled-skills" "$H/"
 
