@@ -27,7 +27,7 @@ Domain-wide delegation, Gin mailbox access, sending email, calendar on Gin's acc
 ## Desired behavior
 
 - B1 Cindy must authenticate as her own Google user only.
-- B2 OAuth scopes must cover only Cindy's Gmail, Calendar, Drive; no domain-wide delegation.
+- B2 OAuth grant must belong to Cindy's own user only; no domain-wide delegation. Scope set: Gmail (read/modify/send), Calendar, Drive, Contacts read-only, Sheets, Docs — Gin decision 2026-11-05 ("take all"); gated actions stay governed by SOUL.md approval tiers.
 - B3 Cindy must list recent messages from her inbox.
 - B4 Cindy must create a draft that remains unsent.
 - B5 Cindy must list events on her own calendar.

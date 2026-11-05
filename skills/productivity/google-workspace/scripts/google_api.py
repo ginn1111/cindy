@@ -358,6 +358,17 @@ def gmail_send(args):
 
 
 
+def gmail_draft(args):
+    # ponytail: Python client only; gws branch skipped (gws not installed for Cindy). Add when gws is.
+    service = build_service("gmail", "v1")
+    message = MIMEText(args.body, "plain")
+    message["To"] = args.to
+    message["Subject"] = args.subject
+    raw = base64.urlsafe_b64encode(message.as_bytes()).decode()
+    result = service.users().drafts().create(userId="me", body={"message": {"raw": raw}}).execute()
+    print(json.dumps({"status": "drafted", "id": result["id"], "messageId": result["message"]["id"]}, indent=2))
+
+
 def gmail_reply(args):
     if _gws_binary():
         original = _run_gws(
@@ -1077,6 +1088,12 @@ def main():
     p.add_argument("--html", action="store_true", help="Send body as HTML")
     p.add_argument("--thread-id", default="", help="Thread ID for threading")
     p.set_defaults(func=gmail_send)
+
+    p = gmail_sub.add_parser("draft")
+    p.add_argument("--to", required=True)
+    p.add_argument("--subject", required=True)
+    p.add_argument("--body", required=True)
+    p.set_defaults(func=gmail_draft)
 
     p = gmail_sub.add_parser("reply")
     p.add_argument("message_id", help="Message ID to reply to")
