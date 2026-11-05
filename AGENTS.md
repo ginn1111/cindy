@@ -2,7 +2,7 @@
 
 ### Issue tracker
 
-GitHub Issues in `ginn1111/cindy`, via `gh` CLI. See `docs/agents/issue-tracker.md`.
+GitHub Issues in `ginn1111/cindy`, via `gh` CLI. Spec: #1. See `docs/agents/issue-tracker.md`.
 
 ### Triage labels
 
