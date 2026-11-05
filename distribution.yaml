@@ -1,0 +1,36 @@
+name: cindy
+version: 0.1.0
+description: Cindy, Assistant to Gin — digital secretary with sole-principal and tiered approval rules
+hermes_requires: '>=0.18.0'
+author: Gin
+license: MIT
+# Env vars by NAME only. Description prefix tags the integration phase.
+env_requires:
+  - name: CINDY_LLM_BASE_URL
+    description: '[phase 1 core] OpenAI-compatible LLM endpoint for Cindy'
+  - name: CINDY_LLM_API_KEY
+    description: '[phase 1 core] LLM API key issued to Cindy'
+  - name: CINDY_LLM_MODEL
+    description: '[phase 1 core] Model name served by the endpoint'
+  - name: SLACK_BOT_TOKEN
+    description: '[phase 4 chat] Cindy Slack app bot token (never gintary''s)'
+    required: false
+  - name: SLACK_APP_TOKEN
+    description: '[phase 4 chat] Cindy Slack app-level token'
+    required: false
+  - name: SLACK_ALLOWED_USERS
+    description: '[phase 4 chat] Gin''s Slack user ID (sole principal)'
+    required: false
+  - name: GH_TOKEN
+    description: '[phase 5 github] Fine-grained token for Cindy''s own GitHub account'
+    required: false
+  - name: NOTION_API_KEY
+    description: '[phase 6 notion, optional] Cindy''s own Notion integration token'
+    required: false
+# Explicit allowlist: a local-dir install must not copy .git, docs, scripts, or project rules.
+distribution_owned:
+  - SOUL.md
+  - config.yaml
+  - skills
+  - distribution.yaml
+  - .no-bundled-skills

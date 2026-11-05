@@ -1,0 +1,42 @@
+# Secrets
+.env
+.env.*
+!env.sample
+auth.json
+auth.json.*
+auth/
+*token*.json
+*client_secret*.json
+*oauth*.json
+mcp-tokens/
+vault/
+pairing/
+
+# Runtime state
+memories/
+sessions/
+*.db
+*.db-shm
+*.db-wal
+state/
+*.lock
+*.pid
+gateway_state.json
+processes.json
+.hermes_history*
+cron/
+
+# Caches, logs, generated runtime files
+cache/
+*_cache/
+*_cache.json
+logs/
+*.log
+home/
+workspace/
+plans/
+skins/
+.skills_prompt_snapshot.json
+skills/.*
+__pycache__/
+*.pyc

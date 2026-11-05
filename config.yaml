@@ -1,0 +1,28 @@
+# Cindy profile config. Secrets come from the profile .env by name only.
+model:
+  provider: custom
+  base_url: ${CINDY_LLM_BASE_URL}
+  api_key: ${CINDY_LLM_API_KEY}
+  default: ${CINDY_LLM_MODEL}
+fallback_providers: []
+toolsets:
+  - hermes-cli
+agent:
+  max_turns: 60
+approvals:
+  mode: manual
+  cron_mode: deny
+memory:
+  memory_enabled: true
+  user_profile_enabled: true
+  write_approval: true
+skills:
+  external_dirs: []
+plugins:
+  enabled: []
+mcp_servers: {}
+security:
+  redact_secrets: true
+  allow_private_urls: false
+profile:
+  timezone: Asia/Bangkok
