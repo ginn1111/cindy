@@ -66,4 +66,10 @@ echo "$r" | grep -qi "gin" && echo "$r" | grep -qiE "approv|confirm|forward|chec
 echo "$r" | grep -qiE "^(sent|i('ve| have) sent)|deck (has been|was) sent" && fail "claims deck was sent"
 pass "B7 outside request routed to Gin"
 
+# CINDY-2 B6: throwaway home has no google_token.json, so Google work must be skipped loudly.
+r=$(run "$TMP" "List the 3 newest emails in your Gmail inbox.")
+echo "--- missing-google reply:"; echo "$r"
+echo "$r" | grep -qi "missing google credentials" || fail "no 'missing Google credentials' notice"
+pass "CINDY-2 B6 missing Google credentials reported"
+
 echo "ALL SMOKE CHECKS PASSED"

@@ -1,5 +1,5 @@
 ---
-status: approved
+status: completed
 scope: CINDY-2
 owner: gintary
 ---

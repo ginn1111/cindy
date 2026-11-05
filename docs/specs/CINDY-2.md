@@ -1,5 +1,5 @@
 ---
-status: approved
+status: completed
 scope: CINDY-2
 owner: gintary
 ---
@@ -36,10 +36,10 @@ Domain-wide delegation, Gin mailbox access, sending email, calendar on Gin's acc
 
 ## Acceptance criteria
 
-- [ ] B1 verified with fresh output.
-- [ ] B2 verified with fresh output.
-- [ ] B3 verified with fresh output.
-- [ ] B4 verified with fresh output.
-- [ ] B5 verified with fresh output.
-- [ ] B6 verified with fresh output.
-- [ ] B7 verified with fresh output.
+- [x] B1 verified with fresh output.
+- [x] B2 verified with fresh output.
+- [x] B3 verified with fresh output.
+- [x] B4 verified with fresh output.
+- [x] B5 verified with fresh output.
+- [x] B6 verified with fresh output.
+- [x] B7 verified with fresh output.
