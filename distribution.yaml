@@ -1,7 +1,8 @@
 name: gintary
 version: 1.2.3
-description: Autonomous secretary assistant with shared gstack skills and herdr-agent-state plugin
-hermes_requires: ">=0.18.0"
+description: Autonomous secretary assistant with shared gstack skills and herdr-agent-state
+  plugin
+hermes_requires: '>=0.18.0'
 author: Gin
 license: MIT
 env_requires:
@@ -14,4 +15,4 @@ env_requires:
   - name: SLACK_SIGNING_SECRET
     description: Slack signing secret
 source: https://github.com/ginn1111/gintary
-installed_at: "2026-07-19T06:39:22+00:00"
+installed_at: '2026-08-24T02:55:05+00:00'

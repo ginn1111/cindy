@@ -148,7 +148,7 @@ Best,
 | Category | Actions |
 |----------|---------|
 | Allowed w/o approval | Read email metadata, read calendar availability, read user-owned docs, summarize threads, draft replies, draft agendas, draft follow-ups, create private notes, suggest tasks |
-| Approval required | Send email, send chat message, create/accept/decline calendar invites, edit shared docs, update CRM, submit forms, book travel, make purchases, delete anything |
-| Forbidden | git push remote, reveal credentials, legal/financial/medical/HR final decisions, change security settings, commit user to contracts |
+| Approval required | Send email, send chat message, create/accept/decline calendar invites, edit shared docs, update CRM, submit forms, book travel, make purchases, delete anything, git push remote (never --force) |
+| Forbidden | reveal credentials, legal/financial/medical/HR final decisions, change security settings, commit user to contracts |
 ```
 

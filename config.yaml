@@ -1,8 +1,9 @@
 model:
-  base_url: https://chatgpt.com/backend-api/codex
-  default: gpt-5.6-luna
-  provider: openai-codex
+  base_url: ${GIN_BASE_URL}
+  default: thinking
+  provider: custom
   openai_runtime: auto
+  api_key: ${GIN_API_KEY}
 fallback_providers: []
 toolsets:
   - hermes-cli
@@ -25,13 +26,7 @@ agent:
   image_input_mode: auto
   disabled_toolsets: []
   personalities:
-    secretary:
-      "You are Hermes Secretary, executive assistant agent — swift, precise,
-      diplomatic, discreet. Professional tone. Reduce friction, protect focus, organize
-      information. Output in structured markdown. Templates: Morning Brief, Meeting
-      Brief, End-of-Day Wrap, Follow-Up Draft. Commands: /brief, /triage, /draft,
-      /schedule, /prep, /followup, /summarize, /tasks, /eod, /weekly, /settings. Permission
-      model: approved-only for sends, reads allowed."
+    secretary: "You are Hermes Secretary, executive assistant agent — swift, precise, diplomatic, discreet. Professional tone. Reduce friction, protect focus, organize information. Output in structured markdown. Templates: Morning Brief, Meeting Brief, End-of-Day Wrap, Follow-Up Draft. Commands: /brief, /triage, /draft, /schedule, /prep, /followup, /summarize, /tasks, /eod, /weekly, /settings. Permission model: approved-only for sends, reads allowed."
 terminal:
   backend: local
   modal_mode: auto
@@ -40,11 +35,7 @@ terminal:
   env_passthrough: []
   shell_init_files: []
   auto_source_bashrc: true
-  docker_image: nikolaik/python-nodejs:python3.11-nodejs20
   docker_forward_env: []
-  singularity_image: docker://nikolaik/python-nodejs:python3.11-nodejs20
-  modal_image: nikolaik/python-nodejs:python3.11-nodejs20
-  daytona_image: nikolaik/python-nodejs:python3.11-nodejs20
   container_cpu: 1
   container_memory: 5120
   container_disk: 51200
@@ -54,28 +45,40 @@ terminal:
   docker_extra_args: []
   docker_run_as_host_user: false
   persistent_shell: true
+  font_family: Hack Nerd Font
+  client_env_passthrough:
+    - HERDR_ENV
+    - HERDR_PANE_ID
+    - HERDR_BIN_PATH
+    - HERDR_SOCKET_PATH
 web:
   backend: ""
   search_backend: ""
   extract_backend: ""
 browser:
-  backend: browser-use
-  inactivity_timeout: 120
-  command_timeout: 30
-  record_sessions: false
-  allow_private_urls: false
+  cloud_provider: local
   engine: auto
-  auto_local_for_private_urls: true
-  cdp_url: ""
-  dialog_policy: must_respond
-  dialog_timeout_s: 300
-  camofox:
-    managed_persistence: false
-    user_id: ""
-    session_key: ""
-    adopt_existing_tab: false
-    rewrite_loopback_urls: false
-    loopback_host_alias: host.docker.internal
+  headed: false
+  use_real_profile: false
+  user_data_dir: "/home/aioz/.hermes/profiles/gintary/chrome-data"
+  cdp_url: "http://127.0.0.1:39839"
+# browser:
+#   inactivity_timeout: 120
+#   command_timeout: 30
+#   record_sessions: false
+#   allow_private_urls: false
+#   engine: auto
+#   auto_local_for_private_urls: true
+#   cdp_url: ""
+#   dialog_policy: must_respond
+#   dialog_timeout_s: 300
+#   camofox:
+#     managed_persistence: false
+#     user_id: ""
+#     session_key: ""
+#     adopt_existing_tab: false
+#     rewrite_loopback_urls: false
+#     loopback_host_alias: host.docker.internal
 checkpoints:
   enabled: false
   max_snapshots: 20
@@ -135,12 +138,6 @@ auxiliary:
     api_key: ""
     timeout: 120
     download_timeout: 30
-  web_extract:
-    provider: auto
-    model: ""
-    base_url: ""
-    api_key: ""
-    timeout: 360
   compression:
     provider: auto
     model: ""
@@ -201,6 +198,12 @@ auxiliary:
     base_url: ""
     api_key: ""
     timeout: 600
+  web_extract:
+    provider: auto
+    model: ""
+    base_url: ""
+    api_key: ""
+    timeout: 360
 display:
   compact: true
   personality: secretary
@@ -226,9 +229,9 @@ display:
   file_mutation_verifier: true
   turn_completion_explainer: true
   show_cost: false
-  skin: matrixtary
+  skin: solarized-osaka-gintary
   language: en
-  tui_status_indicator: kaomoji
+  tui_status_indicator: matrix
   user_message_preview:
     first_lines: 2
     last_lines: 2
@@ -249,8 +252,10 @@ display:
       - cwd
   copy_shortcut: auto
   tool_progress: all
+  sections:
+    thinking: hidden
 dashboard:
-  theme: default
+  theme: midnight
   show_token_analytics: false
   oauth:
     client_id: ""
@@ -262,6 +267,7 @@ dashboard:
     secret: ""
     session_ttl_seconds: 0
   public_url: ""
+  font: system-mono
 privacy:
   redact_pii: false
 tts:
@@ -330,25 +336,21 @@ memory:
   user_char_limit: 1375
   provider: byterover
 delegation:
-  model: ""
-  provider: ""
-  base_url: ""
-  api_key: ""
-  api_mode: ""
-  inherit_mcp_toolsets: true
-  max_iterations: 50
-  child_timeout_seconds: 600
-  reasoning_effort: ""
-  max_concurrent_children: 3
-  max_spawn_depth: 1
-  orchestrator_enabled: true
-  subagent_auto_approve: false
+  backend: profile_routes
+  backends:
+    profile_routes:
+      profiles: # allowlist AND what the agent reads about each profile
+        - name: ginb
+          description: "Cheap and quick: lookups, summaries, simple edits."
+        - name: gintary
+          description: "Slow and careful: hard debugging and design work."
+      default: ginb # optional: profile for tasks that pick none
 prefill_messages_file: ""
 goals:
   max_turns: 20
 skills:
   external_dirs:
-    - ${HOME}/.agents/skills
+    - /home/aioz/.agents/skills
   template_vars: true
   inline_shell: false
   inline_shell_timeout: 10
@@ -389,8 +391,8 @@ curator:
   enabled: true
   interval_hours: 168
   min_idle_hours: 2
-  stale_after_days: 30
-  archive_after_days: 90
+  stale_after_days: 14
+  archive_after_days: 30
   prune_builtins: true
   backup:
     enabled: true
@@ -439,20 +441,30 @@ matrix:
   free_response_rooms: ""
   allowed_rooms: ""
 approvals:
-  mode: manual
+  mode: smart
   timeout: 60
   cron_mode: deny
   mcp_reload_confirm: true
   destructive_slash_confirm: true
 command_allowlist: []
+plugins:
+  hermes-memory-store:
+    auto_extract: "true"
+    db_path: ~/.hermes/profiles/gintary/memory_store.db
+    default_trust: "0.5"
+    hrr_dim: "1024"
+  enabled:
+    - advanced-delegation
+    - ginflow-gate
+    - ginflow-routing
+    - herdr-agent-state
+    - herdr-gateway-session
+    - validated-mistery-loop
+  disabled: []
 hooks_auto_accept: false
 security:
   allow_private_urls: false
   redact_secrets: true
-  tirith_enabled: true
-  tirith_path: tirith
-  tirith_timeout: 5
-  tirith_fail_open: true
   website_blocklist:
     enabled: false
     domains: []
@@ -469,7 +481,7 @@ kanban:
   worker_log_backup_count: 1
   orchestrator_profile: ""
   default_assignee: ""
-  auto_decompose: true
+  auto_decompose: false
   auto_decompose_per_tick: 3
   dispatch_stale_timeout_seconds: 14400
 code_execution:
@@ -487,7 +499,6 @@ logging:
 model_catalog:
   enabled: true
   url: https://hermes-agent.nousresearch.com/docs/api/model-catalog.json
-  ttl_hours: 1
 network:
   force_ipv4: false
 gateway:
@@ -537,7 +548,7 @@ secrets:
 paste_collapse_threshold: 5
 paste_collapse_threshold_fallback: 5
 paste_collapse_char_threshold: 2000
-_config_version: 33
+_config_version: 52
 custom_providers:
   - api_key: ${GIN_API_KEY}
     base_url: ${GIN_BASE_URL}
@@ -552,15 +563,17 @@ custom_providers:
 known_plugin_toolsets:
   cli:
     - a2a
-    - spotify
   slack:
     - spotify
 platform_toolsets:
   cli:
+    - a2a
     - bfl
     - browser
     - clarify
     - code_execution
+    - computer_use
+    - connections
     - cronjob
     - delegation
     - file
@@ -577,11 +590,13 @@ platform_toolsets:
     - tts
     - vision
     - web
+    - yuanbao
   slack:
     - browser
     - clarify
     - code_execution
     - computer_use
+    - connections
     - cronjob
     - delegation
     - file
@@ -597,24 +612,27 @@ platform_toolsets:
     - web
 platforms:
   slack:
-    enabled: true
-plugins:
-  hermes-memory-store:
-    auto_extract: "true"
-    db_path: ~/.hermes/profiles/gintary/memory_store.db
-    default_trust: "0.5"
-    hrr_dim: "1024"
-  enabled:
-    - ginflow-gate
-    - ginflow-routing
-    - herdr-agent-state
-    - validated-mistery-loop
-  disabled: []
+    enabled: false
 profile:
   timezone: Asia/Bangkok
 session_reset:
   mode: none
 mcp_servers:
+  composio:
+    url: https://connect.composio.dev/mcp
+    auth: oauth
+  chrome-devtools:
+    command: npx
+    args:
+      - -y
+      - chrome-devtools-mcp@latest
+      - --autoConnect
+      - --channel=beta
+  dbx-mcp:
+    command: dbx-mcp
+    timeout: 120
+    connect_timeout: 60
+    enable: true
   gemini-notebook-lm:
     command: uvx
     args:
@@ -646,25 +664,37 @@ mcp_servers:
     timeout: 120
     connect_timeout: 60
     enabled: true
+  linear:
+    url: https://mcp.linear.app/mcp
+    auth: oauth
+    enabled: true
+  bruno:
+    command: /home/aioz/.local/bin/node
+    args:
+      - /home/aioz/.local/src/bruno-mcp/dist/index.js
+      - --collection
+      - /home/aioz/Documents/bruno/aiozstream
+    timeout: 120
+    connect_timeout: 60
+    enabled: true
 known_builtin_toolsets:
   cli:
-    - bfl
     - browser
     - clarify
     - code_execution
     - computer_use
+    - connections
     - context_engine
     - cronjob
     - delegation
     - discord
     - discord_admin
     - file
-    - homeassistant
     - image_gen
+    - kanban
     - memory
     - session_search
     - skills
-    - spotify
     - stt
     - terminal
     - todo
@@ -675,25 +705,10 @@ known_builtin_toolsets:
     - web
     - x_search
     - yuanbao
-
-# ── Fallback Model ────────────────────────────────────────────────────
-# Automatic provider failover when primary is unavailable.
-# Uncomment and configure to enable. Triggers on rate limits (429),
-# overload (529), service errors (503), or connection failures.
-#
-# Supported providers:
-#   openrouter   (OPENROUTER_API_KEY)  — routes to any model
-#   openai-codex (OAuth — hermes auth) — OpenAI Codex
-#   nous         (OAuth — hermes auth) — Nous Portal
-#   zai          (ZAI_API_KEY)         — Z.AI / GLM
-#   kimi-coding  (KIMI_API_KEY)        — Kimi / Moonshot
-#   kimi-coding-cn (KIMI_CN_API_KEY)   — Kimi / Moonshot (China)
-#   minimax      (MINIMAX_API_KEY)     — MiniMax
-#   minimax-cn   (MINIMAX_CN_API_KEY)  — MiniMax (China)
-#   bedrock      (AWS IAM / boto3)     — AWS Bedrock (Converse API)
-#
-# For custom OpenAI-compatible endpoints, add base_url and key_env.
-#
-# fallback_model:
-#   provider: openrouter
-#   model: anthropic/claude-sonnet-4
+telemetry:
+  shared_metrics:
+    enabled: false
+    send: false
+    offer_version: 2
+desktop:
+  font_family: SF Pro Text
