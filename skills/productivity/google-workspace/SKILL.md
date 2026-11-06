@@ -183,6 +183,9 @@ $GAPI gmail search "has:attachment filename:pdf newer_than:7d"
 # Read full message (returns JSON with body text)
 $GAPI gmail get MESSAGE_ID
 
+# Draft (saved to Drafts, NOT sent; default for any outgoing mail)
+$GAPI gmail draft --to user@example.com --subject "Hello" --body "Message text"
+
 # Send
 $GAPI gmail send --to user@example.com --subject "Hello" --body "Message text"
 $GAPI gmail send --to user@example.com --subject "Report" --body "<h1>Q4</h1><p>Details...</p>" --html

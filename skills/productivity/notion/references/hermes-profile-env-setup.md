@@ -41,7 +41,7 @@ EOF
 If you already wrote the literal string, fix by reading the key with Python and rewriting the line:
 
 ```python
-with open("/Users/gin/.hermes/profiles/<name>/.env") as f:
+with open(os.path.expanduser("~/.hermes/profiles/<name>/.env")) as f:
     lines = f.readlines()
 
 api_key = next(line.strip().split("=", 1)[1] for line in lines if line.startswith("NOTION_API_KEY=***        # find key
@@ -51,7 +51,7 @@ for i, line in enumerate(lines):
         lines[i] = f"NOTION_API_TOKEN={ap.... # write actual value
         break
 
-with open("/Users/gin/.hermes/profiles/<name>/.env", "w") as f:
+with open(os.path.expanduser("~/.hermes/profiles/<name>/.env"), "w") as f:
     f.writelines(lines)
 ```
 
@@ -62,7 +62,7 @@ The terminal tool **masks** output containing API key patterns (`***`), making `
 ```python
 import subprocess, os, json
 
-with open("/Users/gin/.hermes/profiles/gintary/.env") as f:
+with open(os.path.expanduser("~/.hermes/profiles/<name>/.env")) as f:
     for line in f:
         if line.startswith("NOTION_API_TOKEN=***            token = line.strip().split("=", 1)[1]
 
