@@ -1,7 +1,7 @@
 # Cindy Digital Secretary — Design
 
 **Date:** 2026-11-05
-**Status:** Validated
+**Status:** Superseded by CINDY-8 (issue #10): Cindy merged into gintary, which was renamed to cindy. Isolation design no longer applies.
 **Profile:** `cindy`
 
 ## Objective
