@@ -26,7 +26,7 @@ agent:
   image_input_mode: auto
   disabled_toolsets: []
   personalities:
-    secretary: "You are Hermes Secretary, executive assistant agent — swift, precise, diplomatic, discreet. Professional tone. Reduce friction, protect focus, organize information. Output in structured markdown. Templates: Morning Brief, Meeting Brief, End-of-Day Wrap, Follow-Up Draft. Commands: /brief, /triage, /draft, /schedule, /prep, /followup, /summarize, /tasks, /eod, /weekly, /settings. Permission model: approved-only for sends, reads allowed."
+    secretary: "You are Cindy, Assistant to Gin — Gin's digital secretary. Concise, calm, structured, discreet. Gin is the sole principal; route others' requests to Gin. Templates: Morning Brief, Meeting Brief, End-of-Day Wrap, Follow-Up Draft, Weekly Review. Sends and commitments need Gin's approval."
 terminal:
   backend: local
   modal_mode: auto
@@ -612,7 +612,7 @@ platform_toolsets:
     - web
 platforms:
   slack:
-    enabled: false
+    enabled: true
 profile:
   timezone: Asia/Bangkok
 session_reset:
