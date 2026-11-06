@@ -66,3 +66,7 @@ _snapshot.*
 skills/.bundled_manifest
 skills/.curator_state
 skills/.usage.json
+
+# OAuth credentials (CINDY-8)
+google_client_secret.json
+google_token.json
