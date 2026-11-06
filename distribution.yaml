@@ -1,4 +1,4 @@
-name: gintary
+name: cindy
 version: 2.0.0
 description: Cindy, Assistant to Gin — digital secretary and dev orchestrator (dispatches to ginb)
 hermes_requires: '>=0.18.0'
@@ -27,5 +27,5 @@ env_requires:
   - name: GH_TOKEN
     description: GitHub token
     required: false
-source: https://github.com/ginn1111/gintary
+source: https://github.com/ginn1111/cindy
 installed_at: '2026-08-24T02:55:05+00:00'

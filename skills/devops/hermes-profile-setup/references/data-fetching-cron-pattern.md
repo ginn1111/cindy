@@ -34,7 +34,7 @@ Run standalone Python scripts on a schedule to fetch/process external data and d
 
 ## Example: GitHub Trending
 
-The `github-trending.py` script at `~/.hermes/profiles/gintary/scripts/github-trending.py`:
+The `github-trending.py` script at `~/.hermes/profiles/cindy/scripts/github-trending.py`:
 
 - Fetches top 10 repos by stars (created in last 7 days) via GitHub Search API
 - Outputs markdown table with rank, repo name+link, stars, language, description
@@ -45,7 +45,7 @@ Cron config:
 ```yaml
 name: github-trending-daily
 schedule: "0 2 * * *"
-prompt: "Run /home/aioz/.hermes/profiles/gintary/scripts/github-trending.py with python3. Deliver the script stdout as your final response."
+prompt: "Run /home/aioz/.hermes/profiles/cindy/scripts/github-trending.py with python3. Deliver the script stdout as your final response."
 enabled_toolsets: [terminal]
 repeat: <omitted>  # forever by default for cron schedules
 ```

@@ -60,7 +60,7 @@ browser:
   engine: auto
   headed: false
   use_real_profile: false
-  user_data_dir: "/home/aioz/.hermes/profiles/gintary/chrome-data"
+  user_data_dir: "/home/aioz/.hermes/profiles/cindy/chrome-data"
   cdp_url: "http://127.0.0.1:39839"
 # browser:
 #   inactivity_timeout: 120
@@ -342,7 +342,7 @@ delegation:
       profiles: # allowlist AND what the agent reads about each profile
         - name: ginb
           description: "Cheap and quick: lookups, summaries, simple edits."
-        - name: gintary
+        - name: cindy
           description: "Slow and careful: hard debugging and design work."
       default: ginb # optional: profile for tasks that pick none
 prefill_messages_file: ""
@@ -450,7 +450,7 @@ command_allowlist: []
 plugins:
   hermes-memory-store:
     auto_extract: "true"
-    db_path: ~/.hermes/profiles/gintary/memory_store.db
+    db_path: ~/.hermes/profiles/cindy/memory_store.db
     default_trust: "0.5"
     hrr_dim: "1024"
   enabled:
