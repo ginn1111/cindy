@@ -8,6 +8,9 @@ P=$HOME/.hermes/profiles
 step() { printf '\n== %s\n' "$*"; }
 
 [ -z "${HERMES_PROFILE:-}${HERMES_HOME:-}" ] || { echo "Run outside Hermes (HERMES_PROFILE/HERMES_HOME set)"; exit 1; }
+# Detached launch from inside a session (survives gateway stop):
+#   systemd-run --user --unit cindy-merge -E HOME=$HOME -E PATH=$PATH -E CONFIRM=YES \
+#     bash -c 'bash /home/aioz/personal/cindy/scripts/merge-into-gintary.sh > ~/backups/cindy-merge.log 2>&1'
 [ -d "$P/gintary" ] && [ -d "$P/cindy" ] || { echo "expect both $P/gintary and $P/cindy"; exit 1; }
 ls ~/backups/gintary-premerge-*.tar.gz ~/backups/cindy-premerge-*.tar.gz ~/backups/secrets-premerge-*.tar.gz >/dev/null
 
@@ -15,7 +18,7 @@ step "Running gintary kanban workers (let them finish or reclaim first)"
 for b in $(hermes kanban boards list --json 2>/dev/null | python3 -c 'import json,sys;print(" ".join(x["slug"] for x in json.load(sys.stdin)))'); do
   hermes kanban --board "$b" list --assignee gintary --status running 2>/dev/null | grep -E '^\S+ +t_' || true
 done
-read -rp "Close all gintary TUI/desktop sessions and the dashboard, then type YES: " ok; [ "$ok" = YES ]
+[ "${CONFIRM:-}" = YES ] || { read -rp "Close all gintary TUI/desktop sessions and the dashboard, then type YES: " ok; [ "$ok" = YES ]; }
 
 step "Stop dashboard (pid serving --open-profile gintary)"
 pkill -f 'hermes_cli.main .*dashboard .*--open-profile gintary' || echo "no dashboard running"
