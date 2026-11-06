@@ -1,18 +1,31 @@
 name: gintary
-version: 1.2.3
-description: Autonomous secretary assistant with shared gstack skills and herdr-agent-state
-  plugin
+version: 2.0.0
+description: Cindy, Assistant to Gin — digital secretary and dev orchestrator (dispatches to ginb)
 hermes_requires: '>=0.18.0'
 author: Gin
 license: MIT
 env_requires:
-  - name: OPENAI_API_KEY
-    description: OpenAI API key (for model access)
-  - name: OPENAI_BASE_URL
-    description: OpenAI base url (for model access)
+  - name: GIN_BASE_URL
+    description: OpenAI-compatible LLM endpoint
+  - name: GIN_API_KEY
+    description: LLM API key
+  - name: TELEGRAM_BOT_TOKEN
+    description: Telegram bot token
+    required: false
+  - name: TELEGRAM_ALLOWED_USERS
+    description: Gin's Telegram user ID (sole principal)
+    required: false
   - name: SLACK_BOT_TOKEN
-    description: Slack bot token for cron delivery
-  - name: SLACK_SIGNING_SECRET
-    description: Slack signing secret
+    description: Slack bot token
+    required: false
+  - name: SLACK_APP_TOKEN
+    description: Slack app-level token (socket mode)
+    required: false
+  - name: SLACK_ALLOWED_USERS
+    description: Gin's Slack user ID (sole principal)
+    required: false
+  - name: GH_TOKEN
+    description: GitHub token
+    required: false
 source: https://github.com/ginn1111/gintary
 installed_at: '2026-08-24T02:55:05+00:00'
