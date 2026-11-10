@@ -70,3 +70,7 @@ skills/.usage.json
 # OAuth credentials (CINDY-8)
 google_client_secret.json
 google_token.json
+
+# Ginflow plugins: owned by the ginflow installer (make install), not this distribution
+plugins/ginflow-*/
+plugins/ginflow-*.bak.ginflow-install

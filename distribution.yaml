@@ -1,5 +1,5 @@
 name: cindy
-version: 2.0.0
+version: 2.0.1
 description: Cindy, Assistant to Gin — digital secretary and dev orchestrator (dispatches to ginb)
 hermes_requires: '>=0.18.0'
 author: Gin
