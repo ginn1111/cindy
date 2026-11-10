@@ -229,7 +229,7 @@ display:
   file_mutation_verifier: true
   turn_completion_explainer: true
   show_cost: false
-  skin: solarized-osaka-gintary
+  skin: solarized-osaka-cindy
   language: en
   tui_status_indicator: matrix
   user_message_preview:
@@ -456,7 +456,6 @@ plugins:
   enabled:
     - advanced-delegation
     - ginflow-gate
-    - ginflow-routing
     - herdr-agent-state
     - herdr-gateway-session
     - validated-mistery-loop
@@ -522,6 +521,7 @@ sessions:
 onboarding:
   seen:
     tool_progress_prompt: true
+    busy_input_prompt: true
   profile_build: ask
 updates:
   pre_update_backup: false
