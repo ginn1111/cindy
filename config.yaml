@@ -29,6 +29,7 @@ agent:
     secretary: "You are Cindy, Assistant to Gin — Gin's digital secretary. Concise, calm, structured, discreet. Gin is the sole principal; route others' requests to Gin. Templates: Morning Brief, Meeting Brief, End-of-Day Wrap, Follow-Up Draft, Weekly Review. Sends and commitments need Gin's approval."
 terminal:
   backend: local
+  home_mode: profile
   modal_mode: auto
   cwd: .
   timeout: 180
@@ -229,7 +230,7 @@ display:
   file_mutation_verifier: true
   turn_completion_explainer: true
   show_cost: false
-  skin: solarized-osaka-cindy
+  skin: black-ruby-cindy
   language: en
   tui_status_indicator: matrix
   user_message_preview:
@@ -334,7 +335,7 @@ memory:
   write_approval: true
   memory_char_limit: 2200
   user_char_limit: 1375
-  provider: byterover
+  provider: mnemosyne
 delegation:
   backend: profile_routes
   backends:
@@ -350,7 +351,7 @@ goals:
   max_turns: 20
 skills:
   external_dirs:
-    - /home/aioz/.agents/skills
+    - ${HOME}/.agents/skills
   template_vars: true
   inline_shell: false
   inline_shell_timeout: 10
@@ -456,10 +457,13 @@ plugins:
   enabled:
     - advanced-delegation
     - ginflow-gate
+    - ginflow-trace
     - herdr-agent-state
     - herdr-gateway-session
+    - plannotator
     - validated-mistery-loop
-  disabled: []
+  disabled:
+    - yuanbao
 hooks_auto_accept: false
 security:
   allow_private_urls: false
@@ -483,6 +487,7 @@ kanban:
   auto_decompose: false
   auto_decompose_per_tick: 3
   dispatch_stale_timeout_seconds: 14400
+  default_reviewer_profile: cindy
 code_execution:
   mode: project
 tools:
@@ -548,7 +553,7 @@ secrets:
 paste_collapse_threshold: 5
 paste_collapse_threshold_fallback: 5
 paste_collapse_char_threshold: 2000
-_config_version: 52
+_config_version: 53
 custom_providers:
   - api_key: ${GIN_API_KEY}
     base_url: ${GIN_BASE_URL}
@@ -565,6 +570,73 @@ known_plugin_toolsets:
     - a2a
   slack:
     - spotify
+    - yuanbao
+  a2a:
+    - yuanbao
+  acp:
+    - yuanbao
+  api_server:
+    - yuanbao
+  bluebubbles:
+    - yuanbao
+  buzz:
+    - yuanbao
+  cron:
+    - yuanbao
+  dingtalk:
+    - yuanbao
+  discord:
+    - yuanbao
+  email:
+    - yuanbao
+  feishu:
+    - yuanbao
+  google_chat:
+    - yuanbao
+  homeassistant:
+    - yuanbao
+  irc:
+    - yuanbao
+  line:
+    - yuanbao
+  matrix:
+    - yuanbao
+  mattermost:
+    - yuanbao
+  msgraph_webhook:
+    - yuanbao
+  ntfy:
+    - yuanbao
+  photon:
+    - yuanbao
+  qqbot:
+    - yuanbao
+  raft:
+    - yuanbao
+  relay:
+    - yuanbao
+  signal:
+    - yuanbao
+  simplex:
+    - yuanbao
+  sms:
+    - yuanbao
+  teams:
+    - yuanbao
+  telegram:
+    - yuanbao
+  webhook:
+    - yuanbao
+  wecom:
+    - yuanbao
+  wecom_callback:
+    - yuanbao
+  weixin:
+    - yuanbao
+  whatsapp:
+    - yuanbao
+  whatsapp_cloud:
+    - yuanbao
 platform_toolsets:
   cli:
     - a2a
@@ -590,7 +662,6 @@ platform_toolsets:
     - tts
     - vision
     - web
-    - yuanbao
   slack:
     - browser
     - clarify
@@ -621,6 +692,7 @@ mcp_servers:
   composio:
     url: https://connect.composio.dev/mcp
     auth: oauth
+    enabled: false
   chrome-devtools:
     command: npx
     args:
@@ -663,10 +735,6 @@ mcp_servers:
       - mcp
     timeout: 120
     connect_timeout: 60
-    enabled: true
-  linear:
-    url: https://mcp.linear.app/mcp
-    auth: oauth
     enabled: true
   bruno:
     command: /home/aioz/.local/bin/node
@@ -712,3 +780,7 @@ telemetry:
     offer_version: 2
 desktop:
   font_family: SF Pro Text
+_left_core_scoped:
+  - yuanbao
+_left_core_installed:
+  - yuanbao
